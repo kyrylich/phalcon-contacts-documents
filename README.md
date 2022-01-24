@@ -21,6 +21,8 @@ You can find schema in file data/task_2_schema.sql
 
 #### Task 3
 ```
+GET http://localhost:8080/contacts?limit=2&page=2
+
 GET http://localhost:8080/contacts?search[custom_fields][field_string]=DATA
 
 GET http://localhost:8080/contacts?search[custom_fields][field_date]=2022-01-01
