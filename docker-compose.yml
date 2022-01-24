@@ -1,0 +1,36 @@
+version: "3.0"
+
+services:
+
+  php-service:
+    environment:
+      DATABASE_PASSWORD: postgres
+      DATABASE_USER: postgres
+      DATABASE_DB: postgres
+      DATABASE_PORT: 5432
+      DATABASE_HOST: service-database
+    build:
+      dockerfile: docker/Dockerfile
+      context: .
+    volumes:
+      - .:/app
+    ports:
+      - 8080:8000
+    depends_on:
+      - service-database
+
+  service-database:
+    image: postgres:14.1
+    environment:
+      POSTGRES_SCHEMA: public
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - 5555:5432
+    volumes:
+      - ./data/basic_schema.sql:/docker-entrypoint-initdb.d/1-basic.schema.sql
+      - ./data/task_1_data.sql:/docker-entrypoint-initdb.d/2-task_1_data.sql
+      - ./data/task_2_schema.sql:/docker-entrypoint-initdb.d/3-task_2_schema.sql
+      - ./data/task_3_data.sql:/docker-entrypoint-initdb.d/4-task_3_data.sql
+

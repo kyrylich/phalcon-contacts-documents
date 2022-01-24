@@ -1,0 +1,14 @@
+{
+    "require": {
+        "phalcon/ide-stubs": "^4.1",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phalcon/migrations": "^2.2",
+        "karen-nalbandian/phalcon-coding-standard": "dev-master"
+    },
+    "scripts": {
+        "cs-fix": "vendor/bin/phpcbf app",
+        "cs-check": "vendor/bin/phpcs app"
+    }
+}
